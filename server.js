@@ -4,8 +4,14 @@ require('dotenv').config();
 
 const app = express();
 
-// Middleware
-app.use(cors());
+// Updated CORS configuration for Vercel deployment
+app.use(cors({
+  origin: [
+    'http://localhost:3000',
+    'https://real-estate-frontend-pied.vercel.app'  // Add your frontend Vercel URL
+  ],
+  credentials: true
+}));
 app.use(express.json());
 
 // Routes
